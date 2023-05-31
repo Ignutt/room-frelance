@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class DirtyGarbage : MonoBehaviour
 {
-    [SerializeField] private Material material;
+    [SerializeField] private Material[] material;
 
     private MeshRenderer _meshRenderer;
+    private int _currentIndex = 0;
 
     private void Awake()
     {
@@ -16,6 +17,8 @@ public class DirtyGarbage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _meshRenderer.material = material;
+        if (_currentIndex >= material.Length) return;
+        
+        _meshRenderer.material = material[_currentIndex++];
     }
 }
