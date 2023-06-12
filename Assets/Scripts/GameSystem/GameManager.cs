@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using GarbageSystem;
+using UnityEngine.Events;
 
 namespace GameSystem
 {
     public class GameManager : Singletone<GameManager>
     {
+        [SerializeField] private UnityEvent onWin;
+        
         public event Action<int> OnGarbageChanged;
 
         private readonly List<Garbage> _garbagesList = new List<Garbage>();
@@ -36,6 +39,12 @@ namespace GameSystem
             _garbagesList.Remove(garbage);
 
             CurrentGarbagesCount++;
+
+            if (CurrentGarbagesCount >= MaxGarbagesCount)
+            {
+                onWin?.Invoke();
+            }
+            
             OnGarbageChanged?.Invoke(_garbagesList.Count);
         }
     }

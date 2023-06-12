@@ -22,6 +22,8 @@ namespace GarbageSystem
 
         public override void OnClick()
         {
+            if (_currentIndex >= material.Length) return;
+            
             _meshRenderer.material = material[_currentIndex++];
             
             if (_currentIndex >= material.Length)
