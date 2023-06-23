@@ -18,6 +18,8 @@ namespace GarbageSystem
             enabled = false;
             _isActive = true;
             GameManager.Instance.RemoveGarbage(this);
+
+            base.CleanUp();
         }
 
         public override void OnClick()

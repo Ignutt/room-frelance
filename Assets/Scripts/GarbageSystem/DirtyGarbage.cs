@@ -13,6 +13,7 @@ namespace GarbageSystem
         public override void CleanUp()
         {
             GameManager.Instance.RemoveGarbage(this);
+            base.CleanUp();
         }
 
         public override void OnClick()

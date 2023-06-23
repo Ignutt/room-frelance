@@ -7,7 +7,8 @@ namespace GarbageSystem
         public override void CleanUp()
         {
             GameManager.Instance.RemoveGarbage(this);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            base.CleanUp();
         }
 
         public override void OnClick()

@@ -24,7 +24,13 @@ namespace GameSystem
 
         public void AddGarbage(Garbage garbage)
         {
+            if (_garbagesList.Contains(garbage))
+            {
+                return;
+            }
+
             Debug.Log(garbage.transform.name);
+
             _garbagesList.Add(garbage);
             
             if (_garbagesList.Count > MaxGarbagesCount)
