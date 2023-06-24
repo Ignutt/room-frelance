@@ -20,6 +20,12 @@ namespace GameSystem
         public override void OnAwake()
         {
             Instance = this;
+            
+            onWin.AddListener(delegate
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            });
         }
 
         public void AddGarbage(Garbage garbage)
